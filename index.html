@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title> </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href="css/cf-christmasification-public.min.css" rel="stylesheet" type="text/css">
+
+       <style>
+body {
+  font-family: 'Raleway', sans-serif;
+  background: url('https://pajasevi.github.io/CSSnowflakes/img/background.png') no-repeat left top #082f3d;
+  background-size: cover;
+}
+
+h1, h2 {
+  color: #fff;
+  text-shadow: 1px 1px 3px #fff;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: 400;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+canvas {
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.page {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  h3 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 60px;
+    color: #B93C3F;
+    left: 50%;
+    top: 50%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+  }
+}
+
+
+
+</style>
+<style>
+
+
+
+
+
+.countdownContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background-color: rgba(255,255,255,0.5);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.christmas {
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+.counter {
+  font-size: 4rem;
+}
+
+@media (max-width: 1200px) {
+  
+  .christmas {
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+  .counter {
+    font-size: 2rem;
+  }
+}
+
+
+
+.b-page__content { min-height:120px; }
+.b-head-decor { display:none; }
+.b-page_newyear .b-head-decor { position:absolute; top:0; left:0; display:block; height:115px; width:100%; overflow:hidden; background:url('holiday_bells/images/balls/b-head-decor_newyear.png') repeat-x 0 0; }
+.b-page_newyear .b-head-decor__inner { position:absolute; top:0; left:0; height:115px; display:block; width:373px; }
+.b-page_newyear .b-head-decor::before { content:''; display:block; position:absolute; top:-115px; left:0; z-index:3; height:115px; display:block; width:100%; }
+.b-page_newyear .b-head-decor__inner_n2 { left:373px; }
+.b-page_newyear .b-head-decor__inner_n3 { left:746px; }
+.b-page_newyear .b-head-decor__inner_n4 { left:1119px; }
+.b-page_newyear .b-head-decor__inner_n5 { left:1492px; }
+.b-page_newyear .b-head-decor__inner_n6 { left:1865px; }
+.b-page_newyear .b-head-decor__inner_n7 { left:2238px; }
+.b-ball { position:absolute; }
+.b-ball_n1 { top:0; left:3px; width:59px; height:83px; }
+.b-ball_n2 { top:-19px; left:51px; width:55px; height:70px; }
+.b-ball_n3 { top:9px; left:88px; width:49px; height:67px; }
+.b-ball_n4 { top:0; left:133px; width:57px; height:102px; }
+.b-ball_n5 { top:0; left:166px; width:49px; height:57px; }
+.b-ball_n6 { top:6px; left:200px; width:54px; height:70px; }
+.b-ball_n7 { top:0; left:240px; width:56px; height:67px; }
+.b-ball_n8 { top:0; left:283px; width:54px; height:53px; }
+.b-ball_n9 { top:10px; left:321px; width:49px; height:66px; }
+.b-ball_n1 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n1.png') no-repeat; }
+.b-ball_n2 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n2.png') no-repeat; }
+.b-ball_n3 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n3.png') no-repeat; }
+.b-ball_n4 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n4.png') no-repeat; }
+.b-ball_n5 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n5.png') no-repeat; }
+.b-ball_n6 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n6.png') no-repeat; }
+.b-ball_n7 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n7.png') no-repeat; }
+.b-ball_n8 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n8.png') no-repeat; }
+.b-ball_n9 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_n9.png') no-repeat; }
+.b-ball_i1 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_i1.png') no-repeat; }
+.b-ball_i2 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_i2.png') no-repeat; }
+.b-ball_i3 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_i3.png') no-repeat; }
+.b-ball_i4 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_i4.png') no-repeat; }
+.b-ball_i5 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_i5.png') no-repeat; }
+.b-ball_i6 .b-ball__i { background:url('holiday_bells/images/balls/b-ball_i6.png') no-repeat; }
+.b-ball_i1{top:0; left:0; width:25px; height:71px; }
+.b-ball_i2{top:0; left:25px; width:61px; height:27px; }
+.b-ball_i3{top:0; left:176px; width:29px; height:31px; }
+.b-ball_i4{top:0; left:205px; width:50px; height:51px; }
+.b-ball_i5{top:0; left:289px; width:78px; height:28px; }
+.b-ball_i6{top:0; left:367px; width:6px; height:69px; }
+.b-ball__i { position:absolute; width:100%; height:100%; -webkit-transform-origin:50% 0; -moz-transform-origin:50% 0; -o-transform-origin:50% 0; transform-origin:50% 0; -webkit-transition:all .3s ease-in-out; -moz-transition:all .3s ease-in-out; -o-transition:all .3s ease-in-out; transition:all .3s ease-in-out; pointer-events:none; }
+.b-ball_bounce .b-ball__right{position:absolute; top:0; right:0; left:50%; bottom:0; z-index:9; }
+.b-ball_bounce:hover .b-ball__right{ display:none; }
+.b-ball_bounce .b-ball__right:hover{ left:0; display:block!important; }
+.b-ball_bounce.bounce>.b-ball__i{ -webkit-transform:rotate(-9deg); -moz-transform:rotate(-9deg); -o-transform:rotate(-9deg); transform:rotate(-9deg); }
+.b-ball_bounce .b-ball__right.bounce+.b-ball__i { -webkit-transform:rotate(9deg); -moz-transform:rotate(9deg); -o-transform:rotate(9deg); transform:rotate(9deg); }
+.b-ball_bounce.bounce1>.b-ball__i {-webkit-transform:rotate(6deg); -moz-transform:rotate(6deg); -o-transform:rotate(6deg); transform:rotate(6deg); }
+.b-ball_bounce .b-ball__right.bounce1+.b-ball__i {-webkit-transform:rotate(-6deg); -moz-transform:rotate(-6deg); -o-transform:rotate(-6deg); transform:rotate(-6deg); }
+.b-ball_bounce.bounce2>.b-ball__i{ -webkit-transform:rotate(-3deg); -moz-transform:rotate(-3deg); -o-transform:rotate(-3deg); transform:rotate(-3deg); }
+.b-ball_bounce .b-ball__right.bounce2+.b-ball__i{ -webkit-transform:rotate(3deg); -moz-transform:rotate(3deg); -o-transform:rotate(3deg); transform:rotate(3deg); }
+.b-ball_bounce.bounce3>.b-ball__i {-webkit-transform:rotate(1.5deg); -moz-transform:rotate(1.5deg); -o-transform:rotate(1.5deg); transform:rotate(1.5deg); }
+.b-ball_bounce .b-ball__right.bounce3+.b-ball__i { -webkit-transform:rotate(-1.5deg); -moz-transform:rotate(-1.5deg); -o-transform:rotate(-1.5deg); transform:rotate(-1.5deg); } 
+
+
+    /* customizable snowflake styling */
+    .snowflake {
+      color: #fff;
+      font-size: 1em;
+      font-family: Arial, sans-serif;
+      text-shadow: 0 0 5px #000;
+    }
+    
+    .snowflake,.snowflake .inner{animation-iteration-count:infinite;animation-play-state:running}@keyframes snowflakes-fall{0%{transform:translateY(0)}100%{transform:translateY(110vh)}}@keyframes snowflakes-shake{0%,100%{transform:translateX(0)}50%{transform:translateX(80px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;user-select:none;cursor:default;animation-name:snowflakes-shake;animation-duration:3s;animation-timing-function:ease-in-out}.snowflake .inner{animation-duration:10s;animation-name:snowflakes-fall;animation-timing-function:linear}.snowflake:nth-of-type(0){left:1%;animation-delay:0s}.snowflake:nth-of-type(0) .inner{animation-delay:0s}.snowflake:first-of-type{left:10%;animation-delay:1s}.snowflake:first-of-type .inner,.snowflake:nth-of-type(8) .inner{animation-delay:1s}.snowflake:nth-of-type(2){left:20%;animation-delay:.5s}.snowflake:nth-of-type(2) .inner,.snowflake:nth-of-type(6) .inner{animation-delay:6s}.snowflake:nth-of-type(3){left:30%;animation-delay:2s}.snowflake:nth-of-type(11) .inner,.snowflake:nth-of-type(3) .inner{animation-delay:4s}.snowflake:nth-of-type(4){left:40%;animation-delay:2s}.snowflake:nth-of-type(10) .inner,.snowflake:nth-of-type(4) .inner{animation-delay:2s}.snowflake:nth-of-type(5){left:50%;animation-delay:3s}.snowflake:nth-of-type(5) .inner{animation-delay:8s}.snowflake:nth-of-type(6){left:60%;animation-delay:2s}.snowflake:nth-of-type(7){left:70%;animation-delay:1s}.snowflake:nth-of-type(7) .inner{animation-delay:2.5s}.snowflake:nth-of-type(8){left:80%;animation-delay:0s}.snowflake:nth-of-type(9){left:90%;animation-delay:1.5s}.snowflake:nth-of-type(9) .inner{animation-delay:3s}.snowflake:nth-of-type(10){left:25%;animation-delay:0s}.snowflake:nth-of-type(11){left:65%;animation-delay:2.5s}
+    </style>
+    </head>
+    <body>
+      <div class="b-page_newyear">
+        <div class="b-page__content">
+        <i class="b-head-decor">
+        <i class="b-head-decor__inner b-head-decor__inner_n1">
+        <div class="b-ball b-ball_n1 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n2 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n3 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n4 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n5 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n6 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n7 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n8 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n9 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i1"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i2"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i3"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i4"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i5"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i6"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        </i>
+        <i class="b-head-decor__inner b-head-decor__inner_n2">
+        <div class="b-ball b-ball_n1 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n2 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n3 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n4 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n5 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n6 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n7 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n8 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n9 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i1"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i2"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i3"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i4"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i5"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i6"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        </i>
+        <i class="b-head-decor__inner b-head-decor__inner_n3">
+        <div class="b-ball b-ball_n1 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n2 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n3 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n4 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n5 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n6 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n7 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n8 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n9 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i1"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i2"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i3"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i4"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i5"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i6"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        </i>
+        <i class="b-head-decor__inner b-head-decor__inner_n4">
+        <div class="b-ball b-ball_n1 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n2 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n3 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n4 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n5 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n6 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n7 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n8 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n9 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i1"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i2"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i3"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i4"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i5"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i6"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        </i>
+        <i class="b-head-decor__inner b-head-decor__inner_n5">
+        <div class="b-ball b-ball_n1 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n2 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n3 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n4 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n5 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n6 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n7 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n8 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n9 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i1"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i2"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i3"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i4"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i5"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i6"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        </i>
+        <i class="b-head-decor__inner b-head-decor__inner_n6">
+        <div class="b-ball b-ball_n1 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n2 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n3 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n4 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n5 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n6 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n7 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n8 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n9 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i1"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i2"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i3"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i4"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i5"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i6"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        </i>
+        <i class="b-head-decor__inner b-head-decor__inner_n7">
+        <div class="b-ball b-ball_n1 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n2 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n3 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n4 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n5 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n6 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n7 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n8 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_n9 b-ball_bounce"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i1"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i2"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i3"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i4"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i5"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        <div class="b-ball b-ball_i6"><div class="b-ball__right"></div><div class="b-ball__i"></div></div>
+        </i>
+        </i>
+        </div>
+        </div> 
+        <div class="snowflakes" aria-hidden="true">
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+            <div class="snowflake">
+              <div class="inner">❅</div>
+            </div>
+          </div>
+          <div id="main">
+            <table class="countdownContainer">
+              <tr class="christmas">
+                <td colspan="4"><h3 id="title"></h3></td>
+              </tr>
+              <tr class="counter">
+                <td id="days">120</td>
+                <td id="hours">4</td>
+                <td id="minutes">12</td>
+                <td id="seconds">22</td>
+              </tr>
+              <tr>
+                <td>Ngày</td>
+                <td>Giờ</td>
+                <td>Phút</td>
+                <td>Giây</td>
+              </tr>
+          </table>
+        </div>
+
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/cf-christmasification-public.min.js"></script>
+
+    <script type="text/javascript">
+
+
+// let it snow plugin from https://github.com/peachananr/let_it_snow
+!function(e){var t={speed:0,interaction:true,size:2,count:200,opacity:0,color:"#ffffff",windPower:0,image:false};e.fn.let_it_snow=function(n){function c(){u.clearRect(0,0,o.width,o.height);for(var t=0;t<a;t++){var n=s[t],i=f,p=l,d=100,v=n.x,m=n.y;var g=Math.sqrt((v-i)*(v-i)+(m-p)*(m-p)),y=v-i,b=m-p;if(g<d){var w=d/(g*g),E=(i-v)/g,S=(p-m)/g,x=w/2;n.velX-=x*E;n.velY-=x*S}else{n.velX*=.98;if(n.velY<=n.speed){n.velY=n.speed}switch(r.windPower){case false:n.velX+=Math.cos(n.step+=.05)*n.stepSize;break;case 0:n.velX+=Math.cos(n.step+=.05)*n.stepSize;break;default:n.velX+=.01+r.windPower/100}}var T=r.color;var N=/^#([\da-fA-F]{2})([\da-fA-F]{2})([\da-fA-F]{2})$/;var C=N.exec(T);var k=parseInt(C[1],16)+","+parseInt(C[2],16)+","+parseInt(C[3],16);n.y+=n.velY;n.x+=n.velX;if(n.y>=o.height||n.y<=0){h(n)}if(n.x>=o.width||n.x<=0){h(n)}if(r.image==false){u.fillStyle="rgba("+k+","+n.opacity+")";u.beginPath();u.arc(n.x,n.y,n.size,0,Math.PI*2);u.fill()}else{u.drawImage(e("img#lis_flake").get(0),n.x,n.y,n.size*2,n.size*2)}}requestAnimationFrame(c)}function h(e){if(r.windPower==false||r.windPower==0){e.x=Math.floor(Math.random()*o.width);e.y=0}else{if(r.windPower>0){var t=Array(Math.floor(Math.random()*o.width),0);var n=Array(0,Math.floor(Math.random()*o.height));var i=Array(t,n);var s=i[Math.floor(Math.random()*i.length)];e.x=s[0];e.y=s[1]}else{var t=Array(Math.floor(Math.random()*o.width),0);var n=Array(o.width,Math.floor(Math.random()*o.height));var i=Array(t,n);var s=i[Math.floor(Math.random()*i.length)];e.x=s[0];e.y=s[1]}}e.size=Math.random()*3+r.size;e.speed=Math.random()*1+r.speed;e.velY=e.speed;e.velX=0;e.opacity=Math.random()*.5+r.opacity}function p(){for(var e=0;e<a;e++){var t=Math.floor(Math.random()*o.width),n=Math.floor(Math.random()*o.height),i=Math.random()*3+r.size,u=Math.random()*1+r.speed,f=Math.random()*.5+r.opacity;s.push({speed:u,velY:u,velX:0,x:t,y:n,size:i,stepSize:Math.random()/30,step:0,angle:180,opacity:f})}c()}var r=e.extend({},t,n),i=e(this),s=[],o=i.get(0),u=o.getContext("2d"),a=r.count,f=-100,l=-100;o.width=window.innerWidth;o.height=window.innerHeight;(function(){var e=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame||function(e){window.setTimeout(e,1e3/60)};window.requestAnimationFrame=e})();if(r.image!=false){e("<img src='"+r.image+"' style='display: none' id='lis_flake'>").prependTo("body")}p();e(window).resize(function(){if(this.resizeTO)clearTimeout(this.resizeTO);this.resizeTO=setTimeout(function(){el2=i.clone();el2.insertAfter(i);i.remove();el2.let_it_snow(r)},200)});if(r.interaction==true){o.addEventListener("mousemove",function(e){f=e.clientX,l=e.clientY})}}}(window.jQuery)
+            </script>
+            <script src="holiday_bells/js/holiday_bells.js"></script>
+            <script type="text/javascript">
+
+                const myDate = new Date(); 
+                const xmas = Date.parse("Dec 25, "+myDate.getFullYear());
+                const today = Date.parse(myDate);
+                
+                const daysToChristmas = Math.round((xmas-today)/(1000*60*60*24)) ;
+                
+                
+                if (daysToChristmas == 0) 
+                $('#title').text("It's Christmas!! Merry Christmas!");
+                
+                if (daysToChristmas < 0) 
+                $('#title').text("Christmas was "+-1*(daysToChristmas)+" days ago.");
+                
+                if (daysToChristmas > 0) 
+                $('#title').text("Christmas Countdown");
+                function countdown() {
+  let now = new Date();
+  let evenDate = new Date(2023, 11, 25);
+
+  let actualTime = now.getTime();
+  let eventTime = evenDate.getTime();
+  let remTime = eventTime - actualTime;
+
+  let s = Math.floor(remTime / 1000);
+  let m = Math.floor(s / 60);
+  let h = Math.floor(m / 60);
+  let d = Math.floor(h / 24);
+
+  h %= 24;
+  m %= 60;
+  s %= 60;
+
+  h = h < 10 ? '0' + h : h;
+  m = m < 10 ? '0' + m : m;
+  s = s < 10 ? '0' + s : s;
+
+  document.querySelector('#days').textContent = d;
+  document.querySelector('#hours').textContent = h;
+  document.querySelector('#minutes').textContent = m;
+  document.querySelector('#seconds').textContent = s;
+
+  setTimeout(countdown, 1000)
+
+
+};
+
+countdown();
+                </script>
+
+<audio id="christmas-music" controls autoplay>
+  <source src="mp3/link-to-sleigh-bells-sound.mp3" type="audio/mpeg">
+  <source src="mp3/link-to-laughter-sound.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+	window.addEventListener("load", function() {
+		jQuery(document).ready(function($){
+			$(document).christmasify({
+	      snowflakes:  100,
+	      classy_snow:  true,
+	      snow_speed: 'medium',
+	      santa: true,
+	      music:false,
+	      image_frame: true ,
+	      font: true
+			}); 
+		});
+	});
+  const audio = document.getElementById('christmas-music');
+  let currentTrack = 0;
+  const tracks = [
+    'mp3/link-to-sleigh-bells-sound.mp3',
+    'mp3/link-to-laughter-sound.mp3',
+   
+  ];
+
+        // Sự kiện 'ended' sẽ được gọi khi âm thanh kết thúc
+        audio.addEventListener('ended', function() {
+            // Tự động phát lại âm thanh khi kết thúc
+            audio.currentTime = 0; // Đặt lại thời gian để bắt đầu từ đầu
+            currentTrack = (currentTrack + 1) % tracks.length;
+            audio.src = tracks[currentTrack];
+            audio.play();
+        });
+        function playAudio() {
+    // Phát âm thanh
+    audio.play();
+    
+    // Gỡ bỏ sự kiện click sau khi đã phát âm thanh (nếu bạn muốn âm thanh chỉ phát một lần)
+    document.removeEventListener('click', playAudio);
+     // Gỡ bỏ sự kiện vuốt hoặc di chuột sau khi đã phát âm thanh (nếu bạn muốn âm thanh chỉ phát một lần)
+     document.removeEventListener('touchmove', playAudio);
+    //document.removeEventListener('mousemove', playAudio);
+  }
+
+  // Thêm sự kiện click cho toàn bộ tài liệu (cả trang)
+  document.addEventListener('click', playAudio);
+   // Thêm sự kiện cho hành động vuốt trên màn hình cảm ứng (touchmove)
+   document.addEventListener('touchmove', playAudio);
+
+// Thêm sự kiện cho hành động di chuột (mousemove)
+//document.addEventListener('mousemove', playAudio);
+</script>
+
+             </body>
+</html>
